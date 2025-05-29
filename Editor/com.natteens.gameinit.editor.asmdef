@@ -1,0 +1,10 @@
+{
+  "name": "com.natteens.gameinit.editor",
+  "rootNamespace": "Natteens.GameInit",
+  "references": [
+    "com.natteens.gameinit"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ]
+}
