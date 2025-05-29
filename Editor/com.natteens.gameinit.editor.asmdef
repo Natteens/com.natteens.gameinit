@@ -1,6 +1,6 @@
 {
   "name": "com.natteens.gameinit.editor",
-  "rootNamespace": "Natteens.GameInit",
+  "rootNamespace": "GameInit",
   "references": [
     "com.natteens.gameinit"
   ],

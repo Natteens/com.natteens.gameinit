@@ -1,5 +1,5 @@
 {
   "name": "com.natteens.gameinit",
-  "rootNamespace": "Natteens.GameInit",
+  "rootNamespace": "GameInit",
   "references": []
 }
