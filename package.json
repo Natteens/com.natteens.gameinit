@@ -1,8 +1,8 @@
 {
   "name": "com.natteens.gameinit",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "displayName": "GameInit",
-  "description": "Uma base com arquivos e padr\u00f5es ppra come\u00e7ar projetos novos de forma rapida.",
+  "description": "Uma base com arquivos e padrões ppra começar projetos novos de forma rapida.",
   "keywords": [
     "Unity",
     "GameDev",
@@ -26,7 +26,7 @@
     },
     {
       "displayName": "Utilities Sample",
-      "description": "Utilit\u00e1rios e prefabs de exemplo para testes e desenvolvimento.",
+      "description": "Utilitários e prefabs de exemplo para testes e desenvolvimento.",
       "path": "Samples~/Utilities Sample"
     }
   ],
