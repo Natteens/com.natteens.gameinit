@@ -88,8 +88,8 @@ namespace GameInit.Editor.AnimationEvents
                 playableGraph.Destroy();
             
             playableGraph = PlayableGraph.Create("BlendTreePreviewGraph");
-            mixer = AnimationMixerPlayable.Create(playableGraph, 1, true);
-
+            mixer = AnimationMixerPlayable.Create(playableGraph, 1);
+            
             var output = AnimationPlayableOutput.Create(playableGraph, "Animation", animator);
             output.SetSourcePlayable(mixer);
 
