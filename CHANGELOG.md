@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Natteens/com.natteens.gameinit/compare/v1.0.1...v1.0.2) (2025-06-09)
+
+
+### Bug Fixes
+
+* Pooled Objects e Outros fixes menores. ([7f9bb21](https://github.com/Natteens/com.natteens.gameinit/commit/7f9bb21db0e0bb455f7c83819cfaea0644288e50))
+
 ## [1.0.1](https://github.com/Natteens/com.natteens.gameinit/compare/v1.0.0...v1.0.1) (2025-06-06)
 
 
