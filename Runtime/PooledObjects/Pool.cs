@@ -183,6 +183,15 @@ namespace GameInit.PooledObjects
         #endregion
 
         #region Ciclo de Vida do Sistema
+        
+        /// <summary>
+        /// Verifica se o sistema está habilitado na database
+        /// </summary>
+        static bool IsSystemEnabledInDatabase()
+        {
+            return database?.enablePoolSystem ?? false;
+        }
+        
         /// <summary>
         /// Inicialização primária do sistema
         /// </summary>
@@ -194,9 +203,24 @@ namespace GameInit.PooledObjects
             try
             {
                 systemState = PoolSystemState.Initializing;
-                LogDebug("[Pool] Iniciando sistema de pool...");
+                LogDebug("[Pool] Verificando se sistema está habilitado...");
 
-                PerformSystemInitialization();
+                LoadSystemConfiguration();
+        
+                if (!IsSystemEnabledInDatabase())
+                {
+                    systemState = PoolSystemState.Uninitialized;
+                    LogDebug("[Pool] Sistema desabilitado - não inicializando");
+                    return;
+                }
+
+                LogDebug("[Pool] Sistema habilitado - prosseguindo com inicialização...");
+
+                CreatePoolManagerHierarchy();
+                SetupConfiguredPools();
+                RegisterSystemEvents();
+                InitializeJobSystemIfRequired();
+                ResetPerformanceMetrics();
 
                 systemState = PoolSystemState.Ready;
                 OnSystemInitialized?.Invoke();
@@ -261,6 +285,14 @@ namespace GameInit.PooledObjects
             }
 
             database = databases[0];
+    
+            if (!database.enablePoolSystem)
+            {
+                LogDebug("Pool System desabilitado na database - cancelando inicialização");
+                systemState = PoolSystemState.Uninitialized;
+                return;
+            }
+
             systemConfig = new PoolSystemConfiguration
             {
                 enableDebugMode = database.enableDebugMode,
@@ -1253,12 +1285,14 @@ namespace GameInit.PooledObjects
 
         static void LogWarning(string message)
         {
-            Debug.LogWarning($"[Pool] {message}");
+            if (EnableDebugMode)
+                Debug.LogWarning($"[Pool] {message}");
         }
 
         static void LogError(string message)
         {
-            Debug.LogError($"[Pool] {message}");
+            if (EnableDebugMode)
+                Debug.LogError($"[Pool] {message}");
         }
         #endregion
     }

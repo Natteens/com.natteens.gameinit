@@ -1,14 +1,12 @@
+using System;
 using UnityEngine;
 
 namespace GameInit.PooledObjects
 {
-    /// <summary>
-    /// Database de configuração de pools simplificada
-    /// </summary>
     [CreateAssetMenu(fileName = "PoolDatabase", menuName = "Pooling/Pool Database")]
     public class PoolDatabase : ScriptableObject
     {
-        [System.Serializable]
+        [Serializable]
         public struct PoolConfiguration
         {
             [Tooltip("Identificador único do pool")]
@@ -30,10 +28,14 @@ namespace GameInit.PooledObjects
             public bool clearOnSceneLoad;
         }
 
-        [Header("Pools")]
-        public PoolConfiguration[] pools;
+        [Header("Sistema de Pool")]
+        [Tooltip("Ativa/desativa o sistema de pool completamente")]
+        public bool enablePoolSystem = true;
 
-        [Header("Sistema")]
+        [Header("Pools")]
+        public PoolConfiguration[] pools = Array.Empty<PoolConfiguration>();
+
+        [Header("Configurações")]
         [Tooltip("Ativa logs detalhados")]
         public bool enableDebugMode;
         
