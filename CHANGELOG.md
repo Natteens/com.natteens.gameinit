@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/Natteens/com.natteens.gameinit/compare/v1.0.3...v1.1.0) (2025-06-13)
+
+
+### Features
+
+* Hierarchy Icons and Hierarchy Custom Header Extended ([8f6bf7e](https://github.com/Natteens/com.natteens.gameinit/commit/8f6bf7ef2fe88d920a93254c9a68963c70812f1b))
+
 ## [1.0.3](https://github.com/Natteens/com.natteens.gameinit/compare/v1.0.2...v1.0.3) (2025-06-10)
 
 
