@@ -4,29 +4,44 @@ namespace GameInit.Timers
 {
     public class TickTimer : Timer
     {
-        private float tickInterval;
+        private readonly float tickInterval;
         private float currentTickTime;
+        private readonly int maxTicks;
+        private readonly bool hasMaxTicks;
         
         public Action OnTick = delegate { };
+        public Action OnAllTicksCompleted = delegate { };
         public int TickCount { get; private set; }
+        public int MaxTicks => maxTicks;
+        public bool IsCompleted => hasMaxTicks && TickCount >= maxTicks;
+        public int RemainingTicks => hasMaxTicks ? Math.Max(0, maxTicks - TickCount) : -1;
         
-        public TickTimer(float interval) : base(interval) 
+        public new float Progress => hasMaxTicks ? (float)TickCount / maxTicks : 0f;
+        
+        public TickTimer(float interval, int maxTickCount) : base(interval) 
         {
             tickInterval = interval;
+            maxTicks = maxTickCount;
             currentTickTime = 0f;
             TickCount = 0;
+            hasMaxTicks = true;
         }
 
         public override void Tick(float deltaTime)
         {
-            if (IsRunning) {
-                Time += deltaTime;
+            if (IsRunning && !IsCompleted) {
                 currentTickTime += deltaTime;
                 
                 if (currentTickTime >= tickInterval) {
                     TickCount++;
+                    Time = TickCount * tickInterval;
                     OnTick.Invoke();
-                    currentTickTime = 0f;
+                    currentTickTime -= tickInterval;
+                    
+                    if (IsCompleted) {
+                        Stop();
+                        OnAllTicksCompleted.Invoke();
+                    }
                 }
             }
         }
@@ -36,13 +51,6 @@ namespace GameInit.Timers
             Time = 0f;
             currentTickTime = 0f;
             TickCount = 0;
-        }
-
-        public void Reset(float newInterval) 
-        {
-            tickInterval = newInterval;
-            InitialTime = newInterval;
-            Reset();
         }
 
         public float GetTickInterval() => tickInterval;
