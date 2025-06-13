@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/Natteens/com.natteens.gameinit/compare/v1.1.0...v1.1.1) (2025-06-13)
+
+
+### Bug Fixes
+
+* TickTimer ([d13237f](https://github.com/Natteens/com.natteens.gameinit/commit/d13237ffb7c115996efd0f5606f9d1cbb2bd3a4f))
+
 # [1.1.0](https://github.com/Natteens/com.natteens.gameinit/compare/v1.0.3...v1.1.0) (2025-06-13)
 
 
