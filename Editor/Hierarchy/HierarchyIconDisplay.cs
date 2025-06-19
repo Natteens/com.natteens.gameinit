@@ -20,14 +20,21 @@ namespace GameInit.Editor.Hierarchy
         
         private static void UpdateHierarchyFocus()
         {
+            if (_hierarchyWindow != null && _hierarchyWindow == null)
+            {
+                _hierarchyWindow = null;
+            }
+    
             if (_hierarchyWindow == null)
             {
                 Type hierarchyType = Type.GetType("UnityEditor.SceneHierarchyWindow,UnityEditor");
                 if (hierarchyType != null)
-                    _hierarchyWindow = EditorWindow.GetWindow(hierarchyType);
+                {
+                    var allWindows = Resources.FindObjectsOfTypeAll<EditorWindow>();
+                    _hierarchyWindow = allWindows.FirstOrDefault(w => w.GetType() == hierarchyType);
+                }
             }
-            
-            _isHierarchyFocused = EditorWindow.focusedWindow == _hierarchyWindow;
+            _isHierarchyFocused = _hierarchyWindow != null && EditorWindow.focusedWindow == _hierarchyWindow;
         }
         
         private static void OnHierarchyItemGUI(int instanceID, Rect selectionRect)
