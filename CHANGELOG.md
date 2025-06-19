@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/Natteens/com.natteens.gameinit/compare/v1.1.1...v1.1.2) (2025-06-19)
+
+
+### Bug Fixes
+
+* Hiearchy window bug ([2ccbe2d](https://github.com/Natteens/com.natteens.gameinit/commit/2ccbe2df39f45cd5ba5723453ae8cef5ce283629))
+
 ## [1.1.1](https://github.com/Natteens/com.natteens.gameinit/compare/v1.1.0...v1.1.1) (2025-06-13)
 
 
