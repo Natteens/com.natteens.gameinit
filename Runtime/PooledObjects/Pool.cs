@@ -474,7 +474,6 @@ namespace GameInit.PooledObjects
                     var container = new PoolContainer(config, poolManagerTransform);
                     pools.Add(config.poolTag, container);
 
-                    // Inicializa métricas para o pool
                     performanceMetrics[config.poolTag] = new PoolPerformanceMetrics
                     {
                         lastResetTime = DateTime.Now
