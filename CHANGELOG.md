@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/Natteens/com.natteens.gameinit/compare/v1.1.2...v1.2.0) (2025-06-30)
+
+
+### Features
+
+* Add generic event channel system for Unity ([d304270](https://github.com/Natteens/com.natteens.gameinit/commit/d304270a0d6103808d1e70e67a21c4ea45d3c345))
+
 ## [1.1.2](https://github.com/Natteens/com.natteens.gameinit/compare/v1.1.1...v1.1.2) (2025-06-19)
 
 
