@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/Natteens/com.natteens.gameinit/compare/v1.2.0...v1.2.1) (2025-06-30)
+
+
+### Bug Fixes
+
+* Refactor event listeners into separate files ([a2e7647](https://github.com/Natteens/com.natteens.gameinit/commit/a2e764769cd1a89a3498119eb1b8e7dd06d818ff))
+
 # [1.2.0](https://github.com/Natteens/com.natteens.gameinit/compare/v1.1.2...v1.2.0) (2025-06-30)
 
 
