@@ -18,13 +18,24 @@ namespace GameInit.Timers
         
         public new float Progress => hasMaxTicks ? (float)TickCount / maxTicks : 0f;
         
-        public TickTimer(float interval, int maxTickCount) : base(interval) 
+        // Construtor para timer com limite de ticks
+        public TickTimer(float interval, int maxTickCount) : base(interval)
         {
             tickInterval = interval;
             maxTicks = maxTickCount;
             currentTickTime = 0f;
             TickCount = 0;
             hasMaxTicks = true;
+        }
+        
+        // Construtor para timer infinito (apenas intervalo)
+        public TickTimer(float interval) : base(interval)
+        {
+            tickInterval = interval;
+            maxTicks = 0;
+            currentTickTime = 0f;
+            TickCount = 0;
+            hasMaxTicks = false;
         }
 
         public override void Tick(float deltaTime)
