@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/Natteens/com.natteens.gameinit/compare/v1.2.1...v1.2.2) (2025-07-01)
+
+
+### Bug Fixes
+
+* Update README and add infinite TickTimer constructor ([91503ea](https://github.com/Natteens/com.natteens.gameinit/commit/91503ea103799483552cc9517c987e7865e3a53a))
+
 ## [1.2.1](https://github.com/Natteens/com.natteens.gameinit/compare/v1.2.0...v1.2.1) (2025-06-30)
 
 
