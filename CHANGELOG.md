@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/Natteens/com.natteens.gameinit/compare/v1.2.2...v1.3.0) (2025-07-03)
+
+
+### Features
+
+* Moving the System of Object Pooling to a new Repo ([c52b3f1](https://github.com/Natteens/com.natteens.gameinit/commit/c52b3f1d62980482c3ec130e2dac85266c90fecb))
+
 ## [1.2.2](https://github.com/Natteens/com.natteens.gameinit/compare/v1.2.1...v1.2.2) (2025-07-01)
 
 
