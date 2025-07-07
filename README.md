@@ -1,7 +1,5 @@
 # 🎮 GameInit
 
-> **Uma base completa com sistemas e padrões para começar projetos Unity de forma rápida e eficiente.**
-
 ![Unity](https://img.shields.io/badge/Unity-2022.3+-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Package](https://img.shields.io/badge/Package-v1.2.1-orange.svg)
@@ -27,7 +25,6 @@ Este pacote pode ser instalado através do Unity Package Manager.
 ## 📋 Índice
 
 - [🎯 Sistemas de Eventos](#-sistemas-de-eventos)
-- [🏊 Sistema de Pooling](#-sistema-de-pooling)
 - [⏱️ Sistema de Timers](#️-sistema-de-timers)
 - [🎬 Eventos de Animação](#-eventos-de-animação)
 - [🛠️ Utilitários](#️-utilitários)
@@ -126,100 +123,6 @@ Para uso visual no Editor, o sistema inclui **Event Listeners** prontos:
 | **GameEventListener** | UnityEvents para eventos customizados |
 
 > 💡 **Dica**: Use Event Listeners quando quiser configurar respostas no Inspector sem código!
-
----
-
-## 🏊 Sistema de Pooling
-
-Sistema avançado de **Object Pooling** com gerenciamento automático de memória, métricas de performance e suporte a **Job System**.
-
-### 🔧 Componentes Principais
-
-| Componente | Função |
-|------------|--------|
-| **Pool** | Classe estática central para gerenciar pools |
-| **PoolableObject** | Componente base para objetos pooláveis |
-| **PoolContainer** | Container para gerenciar pools individuais |
-| **PoolDatabase** | ScriptableObject para configuração |
-| **PoolJobSystem** | Sistema de jobs para operações em lote |
-
-### 🚀 Como Usar o Sistema de Pooling
-
-#### 1. **Preparando um Objeto Poolável**
-```csharp
-public class Bullet : PoolableObject
-{
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private float speed = 10f;
-    
-    protected override void OnSpawn()
-    {
-        // Lógica de inicialização quando sai do pool
-        rb.velocity = Vector3.zero;
-        gameObject.SetActive(true);
-    }
-    
-    protected override void OnDespawn()
-    {
-        // Lógica de limpeza quando volta ao pool
-        rb.velocity = Vector3.zero;
-        gameObject.SetActive(false);
-    }
-    
-    void Update()
-    {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        
-        // Auto-despawn após sair da tela
-        if (transform.position.z > 50f)
-            Pool.Despawn(gameObject);
-    }
-}
-```
-
-#### 2. **Spawning Objetos**
-```csharp
-public class WeaponController : MonoBehaviour
-{
-    [SerializeField] private Transform firePoint;
-    
-    void Fire()
-    {
-        // Spawn básico
-        GameObject bullet = Pool.Spawn("BulletPool", firePoint.position, firePoint.rotation);
-        
-        // Spawn com callback para configuração adicional
-        Pool.Spawn("BulletPool", firePoint.position, firePoint.rotation, (obj) => {
-            var bullet = obj.GetComponent<Bullet>();
-            bullet.SetDamage(damage);
-            bullet.SetOwner(this);
-        });
-        
-        // Spawn tipado
-        Bullet bulletComponent = Pool.Spawn<Bullet>("BulletPool", firePoint.position, firePoint.rotation);
-    }
-}
-```
-
-#### 3. **Despawning Objetos**
-```csharp
-// Despawn imediato
-Pool.Despawn(bulletObject);
-
-// Despawn com delay
-Pool.DespawnAfter(bulletObject, 5f);
-
-// Despawn em lote
-Pool.DespawnAll("BulletPool");
-```
-
-### ⚡ Funcionalidades Avançadas
-
-- **🔥 Pré-aquecimento**: `Pool.PrewarmPool("BulletPool", 50)`
-- **🧹 Limpeza Automática**: Remove objetos não utilizados periodicamente
-- **📊 Métricas**: `Pool.GetMetrics("BulletPool")` para monitoramento
-- **⚡ Job System**: Operações em lote para melhor performance
-- **🔄 Auto-scaling**: Pools crescem dinamicamente conforme necessidade
 
 ---
 
@@ -485,16 +388,14 @@ Componente para criar **cabeçalhos visuais** e organizar melhor a hierarquia do
 
 ## 🎮 Exemplos de Uso
 
-O pacote inclui **3 samples** completos demonstrando diferentes casos de uso:
+O pacote inclui samples completos demonstrando diferentes casos de uso:
 
 ### 🎯 2D Sample
-- **🚀 Pooling de projéteis** com trails e efeitos
 - **📱 Sistema de eventos para UI** responsiva
 - **⏰ Timers para power-ups** temporários
 - **🎨 Organização de hierarquia** exemplar
 
 ### 🌟 3D Sample  
-- **👾 Pooling de inimigos** com IA básica
 - **🎯 Sistema de eventos 3D** para interações
 - **⚡ Timers para mecânicas** de gameplay
 - **🎬 Eventos de animação** integrados
@@ -507,56 +408,6 @@ O pacote inclui **3 samples** completos demonstrando diferentes casos de uso:
 
 ---
 
-## 📊 Métricas e Debug
-
-### 🏊 Sistema de Pooling
-```csharp
-// Obter métricas de performance
-var metrics = Pool.GetMetrics("BulletPool");
-Debug.Log($"Ativos: {metrics.ActiveCount}");
-Debug.Log($"Disponíveis: {metrics.InactiveCount}");
-Debug.Log($"Total Spawns: {metrics.TotalSpawns}");
-Debug.Log($"Uso de Memória: {metrics.MemoryUsage}MB");
-```
-
-### 📡 Sistema de Eventos
-- **🐛 Debug mode** para Event Channels
-- **📝 Log automático** de eventos disparados  
-- **📊 Rastreamento** de inscrições ativas
-- **⚠️ Warnings** para vazamentos de memória
-
-### ⏱️ Timers
-- **📊 Estados** em tempo real
-- **📈 Progresso visual** (0-1)
-- **🔄 Debug** de ciclo de vida
-- **⏰ Métricas** de performance
-
----
-
-## 🔧 Configuração Avançada
-
-### 🗃️ Pool Database
-Crie um **PoolDatabase** ScriptableObject para configuração centralizada:
-
-```
-📁 Create → GameInit → Pool Database
-```
-
-**⚙️ Configure**:
-- 📦 **Prefabs** para pooling
-- 📏 **Tamanhos iniciais** dos pools  
-- 🔒 **Limites máximos** de objetos
-- 🧹 **Configurações** de limpeza automática
-- ⚡ **Job System** habilitado/desabilitado
-
-### 📡 Event System Configuration
-- 🐛 **Debug global** habilitado
-- 📊 **Limites** de inscrições por canal
-- ⚡ **Modo performance** otimizado
-- 🔔 **Notificações** de vazamento
-
----
-
 ## 📚 API Reference
 
 ### 📦 Namespaces Principais
@@ -565,32 +416,11 @@ Crie um **PoolDatabase** ScriptableObject para configuração centralizada:
 using GameInit.AnimationEvents;     // Eventos de animação
 using GameInit.GameEvents.Channels; // Canais de eventos
 using GameInit.GameEvents.EventListeners; // Listeners
-using GameInit.PooledObjects;       // Sistema de pooling
-using GameInit.Timers;             // Sistema de timers
-using GameInit.Utils;              // Utilitários gerais
+using GameInit.Timers;              // Sistema de timers
+using GameInit.Utils;               // Utilitários gerais
 ```
 
 ### 🔧 Métodos Principais
-
-#### 🏊 Pool
-```csharp
-// Spawn
-GameObject Pool.Spawn(string poolName, Vector3 position, Quaternion rotation)
-T Pool.Spawn<T>(string poolName, Vector3 position, Quaternion rotation)
-void Pool.Spawn(string poolName, Vector3 pos, Quaternion rot, Action<GameObject> callback)
-
-// Despawn
-void Pool.Despawn(GameObject obj)
-void Pool.DespawnAfter(GameObject obj, float delay)
-void Pool.DespawnAll(string poolName)
-
-// Gerenciamento
-void Pool.PrewarmPool(string poolName, int count)
-void Pool.ClearPool(string poolName)
-void Pool.ClearAllPools()
-PoolPerformanceMetrics Pool.GetMetrics(string poolName)
-bool Pool.PoolExists(string poolName)
-```
 
 #### 📡 Event Channels
 ```csharp
