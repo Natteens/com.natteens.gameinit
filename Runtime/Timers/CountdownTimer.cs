@@ -1,27 +1,22 @@
-namespace GameInit.Timers
-{
-    public class CountdownTimer : Timer
-    {
+using UnityEngine;
+
+namespace GameInit.Timers {
+    /// <summary>
+    /// Timer that counts down from a specific value to zero.
+    /// </summary>
+    public class CountdownTimer : Timer {
         public CountdownTimer(float value) : base(value) { }
 
-        public override void Tick(float deltaTime)
-        {
-            if (IsRunning && Time > 0) {
-                Time -= deltaTime;
+        public override void Tick() {
+            if (IsRunning && CurrentTime > 0) {
+                CurrentTime -= Time.deltaTime;
             }
 
-            if (IsRunning && Time <= 0) {
+            if (IsRunning && CurrentTime <= 0) {
                 Stop();
             }
         }
 
-        public bool IsFinished => Time <= 0;
-        public void Reset() => Time = InitialTime;
-
-        public void Reset(float newTime) 
-        {
-            InitialTime = newTime;
-            Reset();
-        }
+        public override bool IsFinished => CurrentTime <= 0;
     }
 }

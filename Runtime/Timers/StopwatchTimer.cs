@@ -1,18 +1,19 @@
+using UnityEngine;
+
 namespace GameInit.Timers
 {
-    public class StopwatchTimer : Timer
-    {
+    /// <summary>
+    /// Timer that counts up from zero to infinity.  Great for measuring durations.
+    /// </summary>
+    public class StopwatchTimer : Timer {
         public StopwatchTimer() : base(0) { }
 
-        public override void Tick(float deltaTime) 
-        {
+        public override void Tick() {
             if (IsRunning) {
-                Time += deltaTime;
+                CurrentTime += Time.deltaTime;
             }
         }
 
-        public void Reset() => Time = 0;
-
-        public float GetTime() => Time;
+        public override bool IsFinished => false;
     }
 }
