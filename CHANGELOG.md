@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/Natteens/com.natteens.gameinit/compare/v1.3.0...v1.3.1) (2025-09-28)
+
+
+### Bug Fixes
+
+* Refactor and extend timer system with new timer types ([916d658](https://github.com/Natteens/com.natteens.gameinit/commit/916d658d0c5b9d20270f40424080b41437bc1f21))
+
 # [1.3.0](https://github.com/Natteens/com.natteens.gameinit/compare/v1.2.2...v1.3.0) (2025-07-03)
 
 
