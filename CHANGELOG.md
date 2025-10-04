@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/Natteens/com.natteens.gameinit/compare/v1.3.1...v1.3.2) (2025-10-04)
+
+
+### Bug Fixes
+
+* Improve event channel subscription and cleanup ([9e85f33](https://github.com/Natteens/com.natteens.gameinit/commit/9e85f330f954249ca8a09e64ca7300ff44316f3e))
+
 ## [1.3.1](https://github.com/Natteens/com.natteens.gameinit/compare/v1.3.0...v1.3.1) (2025-09-28)
 
 
