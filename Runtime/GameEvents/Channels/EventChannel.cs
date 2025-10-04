@@ -37,7 +37,11 @@ namespace GameInit.GameEvents.Channels {
         /// <param name="callback">Método a ser chamado quando o evento for disparado</param>
         public void Subscribe(Action<T> callback) {
             onEventRaised += callback;
-            if (hasValue) callback?.Invoke(currentValue);
+            
+            // Só invoca valor anterior se houver valor válido E não estiver em modo reset
+            if (hasValue && callback != null) {
+                callback.Invoke(currentValue);
+            }
         }
         
         /// <summary>
@@ -54,9 +58,11 @@ namespace GameInit.GameEvents.Channels {
         public void ResetValue() {
             currentValue = default(T);
             hasValue = false;
+            onEventRaised = null;
         }
         
         private void OnEnable() {
+            // Limpa quando o SO é habilitado no play mode
             if (Application.isPlaying) {
                 ResetValue();
             }
