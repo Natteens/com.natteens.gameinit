@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/Natteens/com.natteens.gameinit/compare/v1.3.2...v1.4.0) (2025-10-18)
+
+
+### Features
+
+* Add utility and extension methods to Utils ([610cc71](https://github.com/Natteens/com.natteens.gameinit/commit/610cc712b4d4477025ceb914a1f1bf66c41f57e9))
+
 ## [1.3.2](https://github.com/Natteens/com.natteens.gameinit/compare/v1.3.1...v1.3.2) (2025-10-04)
 
 
