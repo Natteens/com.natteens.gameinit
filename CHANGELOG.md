@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/Natteens/com.natteens.gameinit/compare/v1.4.0...v1.4.1) (2025-10-30)
+
+
+### Bug Fixes
+
+* Add custom dependency injection system ([6f4bf02](https://github.com/Natteens/com.natteens.gameinit/commit/6f4bf02300847a44747fb9d0d2e5df71059f14ce))
+
 # [1.4.0](https://github.com/Natteens/com.natteens.gameinit/compare/v1.3.2...v1.4.0) (2025-10-18)
 
 
