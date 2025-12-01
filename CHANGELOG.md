@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/Natteens/com.natteens.gameinit/compare/v1.4.1...v1.4.2) (2025-12-01)
+
+
+### Bug Fixes
+
+* Add automated project folder structure generator ([04b3995](https://github.com/Natteens/com.natteens.gameinit/commit/04b3995fa666ccaa499b9595659d302bc7db40b0))
+
 ## [1.4.1](https://github.com/Natteens/com.natteens.gameinit/compare/v1.4.0...v1.4.1) (2025-10-30)
 
 
