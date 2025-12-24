@@ -5,6 +5,6 @@ namespace GameInit.GameEvents.Channels
     /// <summary>
     /// Canal de eventos Vector2
     /// </summary>
-    [CreateAssetMenu(fileName = "Vector3EventChannel", menuName = "GameInit/Events/Vector2 Event")]
+    [CreateAssetMenu(fileName = "Vector3EventChannel", menuName = "Scriptable Objects/GameInit/Events/Vector2 Event")]
     public class Vector2EventChannel : EventChannel<Vector2> { }
 }

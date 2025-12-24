@@ -9,7 +9,7 @@ namespace GameInit.GameEvents.Channels {
     /// <summary>
     /// Canal de eventos universal padronizado
     /// </summary>
-    [CreateAssetMenu(fileName = "GameEventChannel", menuName = "GameInit/Events/Game Event Channel")]
+    [CreateAssetMenu(fileName = "GameEventChannel", menuName = "Scriptable Objects/GameInit/Events/Game Event Channel")]
     public class GameEventChannel : EventChannel<GameEvent> {
         [Header("Event Information")]
         [SerializeField] private string eventName;
